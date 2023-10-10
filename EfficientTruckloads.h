@@ -1,13 +1,12 @@
 #ifndef EFFICIENTTRUCKLOADS_H
 #define EFFICIENTTRUCKLOADS_H
 
-#include <unordered_map>
-
 class EfficientTruckloads {
 public:
-    int numTrucks(int numCrates, int loadSize);
+    static int numTruckloads(int numPackages, int maxLoad);
+
 private:
-    std::unordered_map<std::pair<int, int>, int> memo;
+    static int calculateTruckloads(int numPackages, int maxLoad);
 };
 
 #endif
