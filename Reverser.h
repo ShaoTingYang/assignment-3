@@ -1,12 +1,16 @@
-#ifndef REVERSE_H
-#define REVERSE_H
+#ifndef REVERSER_H
+#define REVERSER_H
 
 #include <string>
 
 class Reverser {
 public:
     int reverseDigit(int value);
-    std::string reverserString(const std::string& letters);
+    std::string reverseString(std::string characters);
+
+private:
+    int appendLastDigit(int number, int digit);
+    std::string appendLastChar(std::string str, char ch);
 };
 
 #endif
