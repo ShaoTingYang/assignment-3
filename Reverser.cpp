@@ -1,23 +1,29 @@
-#include "Reverse.h"
-#include <string>
+#include "Reverser.h"
 
-int Reverse::reverseDigit(int value) {
-    // Base case: If the value is a single digit, return it
+int Reverser::reverseDigit(int value) {
     if (value < 10) {
-        return value;
+        return value; // Single-digit number, no change needed
+    } else {
+        int lastDigit = value % 10;
+        int remainingDigits = value / 10;
+        return appendLastDigit(reverseDigit(remainingDigits), lastDigit);
     }
-    // Recursive case: Reverse the digits
-    int lastDigit = value % 10;
-    int remainingDigits = value / 10;
-    int reversed = reverseDigit(remainingDigits);
-    return (lastDigit * static_cast<int>(pow(10, floor(log10(reverserd) + 1)))) + reverserd;
 }
 
-std::string Reverser::reverserString(const std::string& letters) {
-    // Base case: If the string is empty, return it
-    if (letters.empty()) {
-        return letters;
+std::string Reverser::reverseString(std::string characters) {
+    if (characters.empty()) {
+        return characters; // Base case: empty string
+    } else {
+        char lastChar = characters.back();
+        characters.pop_back();
+        return appendLastChar(reverseString(characters), lastChar);
     }
-    // Recursive case: Reverser the string
-    return reverserString(letters.substr(1)) + letters[0];
+}
+
+int Reverser::appendLastDigit(int number, int digit) {
+    return number * 10 + digit;
+}
+
+std::string Reverser::appendLastChar(std::string str, char ch) {
+    return str + ch;
 }
