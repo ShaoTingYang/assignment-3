@@ -3,10 +3,10 @@
 
 #include <string>
 
-class Reverse {
+class Reverser {
 public:
     int reverseDigit(int value);
-    std::string reverseString(const std::string& letters);
+    std::string reverserString(const std::string& letters);
 };
 
 #endif
