@@ -1,6 +1,6 @@
-#include "EfficientTruckLoads.h"
+#include "EfficientTruckloads.h"
 
-int EfficientTruckLoads::numTrucks(int numCrates, int loadSize) {
+int EfficientTruckloads::numTrucks(int numCrates, int loadSize) {
     // Check if the result is already memoized
     if (memo.find({numCrates, loadSize}) != memo.end()) {
         return memo[{numCrates, loadSize}];
