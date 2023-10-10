@@ -10,14 +10,14 @@ int Reverse::reverseDigit(int value) {
     int lastDigit = value % 10;
     int remainingDigits = value / 10;
     int reversed = reverseDigit(remainingDigits);
-    return (lastDigit * static_cast<int>(pow(10, floor(log10(reversed) + 1)))) + reversed;
+    return (lastDigit * static_cast<int>(pow(10, floor(log10(reverserd) + 1)))) + reverserd;
 }
 
-std::string Reverse::reverseString(const std::string& letters) {
+std::string Reverser::reverserString(const std::string& letters) {
     // Base case: If the string is empty, return it
     if (letters.empty()) {
         return letters;
     }
-    // Recursive case: Reverse the string
-    return reverseString(letters.substr(1)) + letters[0];
+    // Recursive case: Reverser the string
+    return reverserString(letters.substr(1)) + letters[0];
 }
