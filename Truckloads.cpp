@@ -1,6 +1,6 @@
-#include "TruckLoads.h"
+#include "Truckloads.h"
 
-int TruckLoads::numTrucks(int numCrates, int loadSize) {
+int Truckloads::numTrucks(int numCrates, int loadSize) {
     // Base case: If there are fewer crates than the load size, return 1 truck
     if (numCrates <= loadSize) {
         return 1;
