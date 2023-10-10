@@ -3,7 +3,7 @@
 
 #include <unordered_map>
 
-class EfficientTruckLoads {
+class EfficientTruckloads {
 public:
     int numTrucks(int numCrates, int loadSize);
 private:
