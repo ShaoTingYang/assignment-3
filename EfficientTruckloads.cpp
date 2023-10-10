@@ -1,23 +1,25 @@
 #include "EfficientTruckloads.h"
+#include <vector>
 
-int EfficientTruckloads::numTrucks(int numCrates, int loadSize) {
-    // Check if the result is already memoized
-    if (memo.find({numCrates, loadSize}) != memo.end()) {
-        return memo[{numCrates, loadSize}];
+std::vector<std::vector<int>> memo; // Memoization table
+
+int EfficientTruckloads::numTruckloads(int numPackages, int maxLoad) {
+    memo.resize(numPackages + 1, std::vector<int>(maxLoad + 1, -1));
+    return calculateTruckloads(numPackages, maxLoad);
+}
+
+int EfficientTruckloads::calculateTruckloads(int numPackages, int maxLoad) {
+    if (numPackages <= maxLoad) {
+        return 1; // Only one truck needed
     }
-    
-    // Base case: If there are fewer crates than the load size, return 1 truck
-    if (numCrates <= loadSize) {
-        memo[{numCrates, loadSize}] = 1;
-        return 1;
+
+    if (memo[numPackages][maxLoad] != -1) {
+        return memo[numPackages][maxLoad];
     }
-    
-    // Recursive case: Split the load into two equal parts and calculate trucks needed
-    int halfLoad = numCrates / 2;
-    int trucks = numTrucks(halfLoad, loadSize) + numTrucks(numCrates - halfLoad, loadSize);
-    
-    // Memoize the result
-    memo[{numCrates, loadSize}] = trucks;
-    
-    return trucks;
+
+    int halfPackages = numPackages / 2;
+    int truckloads = calculateTruckloads(halfPackages, maxLoad) + calculateTruckloads(numPackages - halfPackages, maxLoad);
+
+    memo[numPackages][maxLoad] = truckloads;
+    return truckloads;
 }
