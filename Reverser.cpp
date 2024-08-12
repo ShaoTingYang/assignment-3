@@ -1,13 +1,18 @@
 // Reverser.cpp
 #include "Reverser.h"
+#include <cstdlib>  // 为了使用 abs()
 
 int Reverser::reverseDigit(int value) {
     int reversed = 0;
+    int sign = (value < 0) ? -1 : 1;  // 处理负数
+    value = abs(value);  // 取绝对值进行反转操作
+
     while (value > 0) {
         reversed = reversed * 10 + value % 10;
         value /= 10;
     }
-    return reversed;
+
+    return sign * reversed;  // 恢复符号
 }
 
 std::string Reverser::reverseString(std::string characters) {
