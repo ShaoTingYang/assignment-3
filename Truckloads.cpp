@@ -1,10 +1,7 @@
+// Truckloads.cpp
 #include "Truckloads.h"
 
-int Truckloads::numTruckloads(int numPackages, int maxLoad) {
-    if (numPackages <= maxLoad) {
-        return 1; // Only one truck needed
-    } else {
-        int halfPackages = numPackages / 2;
-        return numTruckloads(halfPackages, maxLoad) + numTruckloads(numPackages - halfPackages, maxLoad);
-    }
+int Truckloads::numTrucks(int numCrates, int loadSize) {
+    if (numCrates <= loadSize) return 1;
+    else return numTrucks((numCrates + 1) / 2, loadSize) + numTrucks(numCrates / 2, loadSize);
 }
