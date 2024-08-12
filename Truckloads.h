@@ -1,9 +1,11 @@
+
+// Truckloads.h
 #ifndef TRUCKLOADS_H
 #define TRUCKLOADS_H
 
 class Truckloads {
 public:
-    static int numTruckloads(int numPackages, int maxLoad);
+    int numTrucks(int numCrates, int loadSize);
 };
 
 #endif
