@@ -1,16 +1,21 @@
 
-// EfficientTruckloads.h
-#ifndef EFFICIENTTRUCKLOADS_H
-#define EFFICIENTTRUCKLOADS_H
+// Reverser.cpp
+#include "Reverser.h"
 
-#include <unordered_map>
+int Reverser::reverseDigit(int value) {
+    static int reversed = 0;
+    static int remainder = 0;
+    
+    if(value <= 0) return reversed;
+    remainder = value % 10;
+    reversed = reversed * 10 + remainder;
+    reverseDigit(value / 10);
+    return reversed;
+}
 
-class EfficientTruckloads {
-public:
-    int numTrucks(int numCrates, int loadSize);
-private:
-    std::unordered_map<int, int> memo;
-    int calculateTrucks(int numCrates, int loadSize);
-};
-
-#endif
+std::string Reverser::reverseString(std::string characters) {
+    if (characters.length() <= 1) {
+        return characters;
+    }
+    return reverseString(characters.substr(1)) + characters[0];
+}
