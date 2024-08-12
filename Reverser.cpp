@@ -1,18 +1,36 @@
+// Reverser.h
+#ifndef REVERSER_H
+#define REVERSER_H
+
+#include <string>
+
+class Reverser {
+public:
+    int reverseDigit(int value);
+    std::string reverseString(std::string characters);
+
+private:
+    int reverseHelper(int value); // 辅助递归函数
+};
+
+#endif
+
 // Reverser.cpp
 #include "Reverser.h"
-#include <cstdlib>  // 为了使用 abs()
+#include <cmath>  // 为了使用 log10 和 pow
 
 int Reverser::reverseDigit(int value) {
-    int reversed = 0;
-    int sign = (value < 0) ? -1 : 1;  // 处理负数
-    value = abs(value);  // 取绝对值进行反转操作
+    int sign = (value < 0) ? -1 : 1;
+    value = abs(value);
+    
+    return sign * reverseHelper(value);
+}
 
-    while (value > 0) {
-        reversed = reversed * 10 + value % 10;
-        value /= 10;
-    }
-
-    return sign * reversed;  // 恢复符号
+int Reverser::reverseHelper(int value) {
+    if (value == 0) return 0;
+    
+    int numDigits = (int)log10(value);
+    return (value % 10) * pow(10, numDigits) + reverseHelper(value / 10);
 }
 
 std::string Reverser::reverseString(std::string characters) {
